@@ -1,0 +1,152 @@
+\documentclass[12pt]{article}
+% Cette partie sert à définir un format pour le
+% document Latex. Notez qu'il y a une option pour
+% écrire recto-verso (two sided). Vous pouvez 
+% facilement trouver l'information sur ceci en ligne.
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+% Ces packages donnent accès à des fonctionalités
+% utiles pour la rédaction de documents français. Les
+% options sont indiquées entre corchets, avant le nom
+% du package. Sans ces packages, il vous faudrait coder
+% les accents à la main: il faudrait écrire \'{a} plutôt que à.
+
+\usepackage{amsmath, amssymb, amsfonts}
+% Le premier package donne accès à des commandes et des
+% environnements mathématiques tel que "align" qui
+% permet d'aligner plusieurs équations. Les deux autres
+% donnent accès à des symboles et polices utiles pour
+% les maths.
+
+\usepackage{hyperref}
+% Ceci permet de créer des hyperliens entre différents
+% éléments du texte comme par exemple une référence
+% comme Stock et Watson (2002a) et la référence complète
+% dans la bibliographie ou encore des numéros de tables,
+% de figures ou d'équations et les tables, figures et
+% équations auxquels ils réfèrent.
+
+\usepackage[dvipsnames]{xcolor}
+% Pour ajouter les couleurs pour hyperref.
+
+\usepackage{graphicx}
+% Ce package permet l'ajout d'options à la commande
+% \includegraphics pour l'inclusion de figures.
+
+\usepackage{subcaption}
+% Pour les figures composées.
+
+\usepackage{natbib}
+% Pour les commandes de citations.
+
+\usepackage{booktabs}
+% Contient les fonctions \toprule, \midrule et \bottomrule.
+
+\usepackage{float, morefloats}
+% Contient les options pour contrôler la disposition
+% de figures et de tableaux.
+
+\hypersetup{
+	colorlinks,
+	citecolor=Green,
+	linkcolor=red,
+	urlcolor=blue}
+% Les options pour les hyperliens.
+
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+% Commande personalisée pour faciliter la création de
+% dérivées partielles.
+
+\newcommand{\argmin}[1]{\arg\underset{#1}{\min}}
+% Pour "argmin".
+
+\newcommand{\CustomTitlePage}[8]{
+	\begin{titlepage}
+		\begin{center}
+			
+			UNIVERSITÉ DU QUÉBEC À MONTRÉAL \\
+			\vspace{8em}
+			
+			#1 \\ %TITRE DU TRAVAIL
+			\vspace{8em}
+			
+			TRAVAIL PRÉSENTÉ À \\
+			#2 \\ % NOM DU PROFESSEUR(E)
+			\vspace{1em}
+			DANS LE CADRE DU COURS \\
+			#3 \\ % NOM DU COURS
+			#4, gr. #5 \\ % SIGLE DU COURS, gr. GROUPE
+			\vspace{8em}
+			
+			PAR \\ %% \\ saute à l'autre ligne
+			#6 \\
+			#7 \\
+			\vspace{8em}
+			
+			#8
+			
+		\end{center}
+	\end{titlepage}
+	
+}
+
+\begin{document}
+	
+	\CustomTitlePage{TITRE DU TRAVAIL}{NOM DU/DE LA PROFESSEUR(E)}{NOM DU COURS}{SIGLE}{No DE GROUPE}{VOTRE NOM}{VOTRE MATRICULE}{\today}
+		
+	\begin{align} % align*: pour enlever tous les chiffres
+		\hat{\beta} &:= \argmin{\beta \in \mathbb{R}^K} \left\{ || Y - X\beta ||_2^2 \right\} \label{definition} \\
+		            &= \argmin{\beta \in \mathbb{R}^K} \left\{ (Y - X\beta)'(Y - X\beta) \right\} \notag \\ 
+		\rightarrow & \hat{\beta} = (X'X)^{-1}X'Y \label{solution}
+	\end{align}   % align*: il faut mettre le même dans \begin et \end
+	
+	Voici les équations (\ref{definition}) and (\ref{solution}). Le tableau (\ref{table}) est ci-bas, tout comme la figure (\ref{figure}).
+	
+	\begin{table}[H] % H force le positionnement dans le texte.
+		\begin{center}
+			\caption{Exemple} \label{table} % Les étiquette permettent les
+			\begin{tabular}{l|cc}           % références croisées dynamiques.
+				\toprule \toprule
+				& \multicolumn{2}{c}{Exemple} \\
+				& Col. Title 1 & Col. Title \\ \midrule
+				R. Title 1 & 1$^{**}$ & 2 \\
+				R. Title 2 & 3 & 4 \\ \bottomrule \bottomrule
+			\end{tabular}
+		\end{center}
+		\begin{footnotesize}
+			\flushleft         % Ceci force un ajustement à gauche
+			Note: Un exemple.  % dans l'environnement où il se trouve.
+		\end{footnotesize}
+	\end{table}
+	
+	\begin{figure}[H] % H force le positionnement dans le texte.
+		\begin{center}
+			\begin{subfigure}{.5\textwidth} % La moitié de la largeur du texte
+				\includegraphics[width=\textwidth]{../googleScholar.png}
+				\subcaption{A}
+			\end{subfigure}%
+			\begin{subfigure}{.5\textwidth}
+				\includegraphics[width=\textwidth]{../googleScholar.png}
+				\subcaption{B}
+			\end{subfigure}
+			\caption{Un exemple de figure} \label{figure}
+		\end{center}
+		\begin{footnotesize}
+			\flushleft
+			Note: Un exemple.
+		\end{footnotesize}
+	\end{figure}
+	
+	% Notes: Sans le commentaire entre les subfigures, elles sont empilées
+	% verticalement. Aussi, souvenez-vous: ../ veut dire <<remonter>> d'un
+	% niveau, ../../ <<remonter>> de deux niveaux, etc.
+	
+	\cite{cit1} % Il y aussi \citep pour entre parenthèse. 
+	
+	\clearpage                              % Force le passage à une autre page
+	\renewcommand{\refname}{Bibliographie}  % Change le titre de section
+	\bibliographystyle{../apalike-uqam.bst} % Style UQAM de bibliographie
+	\bibliography{../bibliographie}         % Importer le fichier .bib
+	
+\end{document}

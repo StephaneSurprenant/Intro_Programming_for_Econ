@@ -1,0 +1,28 @@
+\begin{center} 
+\begin{table}[H] 
+\caption{Effet du diplome sur le salaire} 
+\begin{tabular}{lcccc}
+\toprule \toprule 
+& MCO (1) & MCO (2) & MCO (3) & MCO (4) \\ \midrule
+Constante & 35361.1209386282$^{***}$ & 35363.3651452282$^{***}$ & 8025.16138483555$^{***}$ & 21879.9774809353$^{***}$ \\
+sd(cst) & (371.635839595558) & (559.688726018151) & (2085.18274473698) & (1138.8916140263) \\
+Diplome & 1641.28220038529$^{***}$ & 118.022196543936 & -1245.7531335521$^{*}$ & -1183.37514140912 \\
+sd(D) & (556.480768671398) & (794.852114990914) & (737.781761900663) & (737.000031608279) \\
+Sexe & - & -3.97217398221012 & -501.698933615652 & -520.523569267552 \\
+sd(S) & - & (744.61069957538) & (685.653991591039) & (684.506146007888) \\
+DipxSexe & - & 3249.77621976987$^{***}$ & 3846.08737610919$^{***}$ & 3814.3609703207$^{***}$ \\
+sd(SxD) & - & (1110.94415979938) & (1022.45879101095) & (1020.68605816681) \\
+Age/age2 & - & - & 1113.86426141245$^{***}$ & 22.2296623648323$^{***}$ \\
+sd(A/A2) & - & - & (82.3302655805671) & (1.61989386094122) \\
+Qc & - & - & - & -249.133664856866 \\
+sd(Qc) & - & - & - & (508.947242911933) \\
+Nobs & 1000 & 1000 & 1000 & 1000 \\
+R2a & 0.00764770576389318 & 0.0208908830290516 & 0.172190371229294 & 0.175299797125901 \\ \bottomrule \bottomrule
+\end{tabular} 
+\end{table} 
+\end{center} 
+\vspace{-3em} 
+\begin{footnotesize} 
+\flushleft 
+La variable dependante est le salaire. La regression (3) inclus l'Age, alors que (4) inclut l'Age au carre. Le diplome est un diplome post-secondaire. Les femmes correspondent au cas sexe = 0 et les ontariens au cas Qc = 0.
+\end{footnotesize}
